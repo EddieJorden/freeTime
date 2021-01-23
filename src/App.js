@@ -1,9 +1,11 @@
-import './App.css';
-
 function App() {
 	return (
-		<div className="App">
-			<h1>free Time</h1>
+		<div>
+			<head>freeTime</head>
+			<div>
+				<h1>freeTime</h1>
+			</div>
+			<p>how much is your time worth?</p>
 		</div>
 	);
 }
