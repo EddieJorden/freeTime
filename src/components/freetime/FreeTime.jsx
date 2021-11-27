@@ -10,8 +10,8 @@ const FreeTime = () => {
     const hoursNeededEachDay = hoursSleepingPerDay + hoursEatingPerDay
 
     // working
-    const hourlyWage = 70
-    const workingHoursPerWeek = 72
+    const hourlyWage = 90
+    const workingHoursPerWeek = 40
     const workingHoursPerMonth = workingHoursPerWeek * 4
 
     // money
@@ -68,7 +68,14 @@ const FreeTime = () => {
         const neededIncomePerMonth = monthlyWage - monthlyExpenses
         const neededLivingCostPerMonth = Math.floor(monthlyWage * .61803398875)
         return `you only need to be making ${naturesBalance} more than your living expenses. 
-        For your monthly expenses, and income, this means you should be making ${neededIncomePerMonth} more than your living costs per month or your living costs should be ${neededLivingCostPerMonth} for your income`
+        For your monthly expenses, and income, this means you are making ${neededIncomePerMonth} more than your living costs per month. Your living costs could be ${neededLivingCostPerMonth} based on your income`
+    }
+
+    const freeTimePerMonth = () => {
+        const totalFreeTimePerMonth = hoursPerMonth - (workingHoursPerMonth + (hoursNeededEachDay * 31))
+        const freeTimePerWeek = totalFreeTimePerMonth / 4
+        const freeTimePerDay = totalFreeTimePerMonth / 31
+        return `you have ${totalFreeTimePerMonth} hours free per month, ${freeTimePerWeek} hours per week, ${freeTimePerDay} hours per day`
     }
 
     return (
@@ -100,6 +107,9 @@ const FreeTime = () => {
             </div>
             <div>
                 {moneyNeededPerMonth()}
+            </div>
+            <div>
+                {freeTimePerMonth()}
             </div>
         </div>
     )
