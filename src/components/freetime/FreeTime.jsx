@@ -1,6 +1,12 @@
 import React from 'react'
 
-const FreeTime = () => {
+const FreeTime = ({
+    userName,
+    userWorkingHours,
+    userHourlyWage,
+    userMonthlyExpenses,
+    history
+}) => {
     // time
     const hoursPerDay = 24
     const hoursPerWeek = hoursPerDay * 7
@@ -11,42 +17,61 @@ const FreeTime = () => {
 
     // working
     const hourlyWage = 90
-    const workingHoursPerWeek = 40
-    const workingHoursPerMonth = workingHoursPerWeek * 4
+    const workingHoursPerWeek = 72
+    const workingHoursPerMonth = userWorkingHours * 4
 
     // money
-    const monthlyWage = hourlyWage * workingHoursPerMonth
-    const monthlyExpenses = 4500
+    const monthlyWage = (userHourlyWage * workingHoursPerMonth) - ((userHourlyWage * workingHoursPerMonth) * .35)
 
+    const myMonthlyCosts = {
+        rent: 2995,
+        corolla: 450,
+        sportsCar: 450,
+        autoInsurance: 500,
+        eddieCreditCard: 1000,
+        att: 75,
+        pge: 225,
+        utilitys: 100,
+        youtube: 50,
+        food: 1000,
+        catFood: 150,
+        prettyStuff: 120,
+        gas: 300,
+        vasilyPhone: 45
+    }
+
+    const myMonthlyExpenses = costs => Object.values(myMonthlyCosts).reduce((a, b) => a + b)
+    console.log('my monthly expenses', myMonthlyExpenses())
+    
     const makingEnough = () => {
-        if (monthlyWage > monthlyExpenses) {
-            return `congratulations you are in the clear`
-        } else if (monthlyExpenses > monthlyWage) {
-            return `you are fucked`
+        if (monthlyWage > userMonthlyExpenses) {
+            return `Congratulations! you are making enough to pay your bills.`
+        } else if (userMonthlyExpenses > monthlyWage) {
+            return `You are fucked.`
         }
     }
 
     const yourFreeTime = () => {
         const hoursNotWorking = hoursPerMonth - workingHoursPerMonth
-        return `you have ${hoursNotWorking} free hours a month`
+        return `You have ${hoursNotWorking} non working hours a month.`
     }
 
     const averageWorkingHours = () => {
-        const averageWorkingHours = 40
-        if (workingHoursPerMonth < averageWorkingHours) {
-            return `you are working less than average`
-        } else return `you are working more than average`
+        const averageWorkingHours = 160
+        if (workingHoursPerMonth <= averageWorkingHours) {
+            return `You are working less than average.`
+        } else return `You are working more than average.`
     }
 
     const hoursNeededToPayBills = () => {
-        if(monthlyExpenses <= monthlyWage) {
-            return `you are making enough`
-        } else return `you are not making enough`
+        if(userMonthlyExpenses <= monthlyWage) {
+            return `You are making enough money.`
+        } else return `You are not making enough.`
     }
 
     const percentageOfTimeWorking = () => {
         const timePercentWorking = Math.floor((workingHoursPerMonth / hoursPerMonth) * 100)
-        return `you are spending ${timePercentWorking} percent of your time working`
+        return `Yo are spending ${timePercentWorking} percent of your time working.`
     }
 
     const timeNeededPerMonth = () => {
@@ -57,35 +82,40 @@ const FreeTime = () => {
         const naturesBalanceOverUnder = hoursPerMonth - naturesBalance
         let hoursComparedToBalance = null
         if (totalTimeNeededPerMonth < naturesBalance) {
-            hoursComparedToBalance = `congratulations you are under natures balance`
+            hoursComparedToBalance = `Congratulations you have more than 38.2 percent of your time free per month.`
         } else {
-            hoursComparedToBalance = `you are working more than natures balance`}
-        return `you have ${totalTimeNeededPerMonth} out of ${hoursPerMonth} hours worth of obligations per month, this is ${percentOfTime} percent of your time, natures ideal balance is ${naturesBalance} hours a month,  ${hoursComparedToBalance},`
+            hoursComparedToBalance = `You are working too much to be balanced,  you should have 38.2 percent of your time free.`}
+        return `You have ${totalTimeNeededPerMonth} hours worth of obligations per month, including ${workingHoursPerMonth} working hours, ${hoursSleepingPerDay} hours a day of sleep, and ${hoursEatingPerDay} hours eating per day.  Out of a total of ${hoursPerMonth} hours per month, this is ${percentOfTime} percent of your time. Natures ideal balance is ${naturesBalance} work hours a month,  ${hoursComparedToBalance},`
     }
 
     const moneyNeededPerMonth = () => {
-        const naturesBalance = Math.floor(monthlyExpenses * .61803398875)
-        const neededIncomePerMonth = monthlyWage - monthlyExpenses
+        const naturesBalance = Math.floor(userMonthlyExpenses * .61803398875)
+        const neededIncomePerMonth = monthlyWage - userMonthlyExpenses
         const neededLivingCostPerMonth = Math.floor(monthlyWage * .61803398875)
-        return `you only need to be making ${naturesBalance} more than your living expenses. 
-        For your monthly expenses, and income, this means you are making ${neededIncomePerMonth} more than your living costs per month. Your living costs could be ${neededLivingCostPerMonth} based on your income`
+        return `You only need to be making $${naturesBalance} more than your living expenses. 
+        For your monthly expenses, and income, this means you are making $${neededIncomePerMonth} more than your living costs per month. Your living costs should be under $${neededLivingCostPerMonth} per month to save or invest 38.2 percent of your income.`
     }
 
     const freeTimePerMonth = () => {
         const totalFreeTimePerMonth = hoursPerMonth - (workingHoursPerMonth + (hoursNeededEachDay * 31))
         const freeTimePerWeek = totalFreeTimePerMonth / 4
-        const freeTimePerDay = totalFreeTimePerMonth / 31
-        return `you have ${totalFreeTimePerMonth} hours free per month, ${freeTimePerWeek} hours per week, ${freeTimePerDay} hours per day`
+        const freeTimePerDay = Math.floor((totalFreeTimePerMonth / 31))
+        return `You have ${totalFreeTimePerMonth} hours free per month, ${freeTimePerWeek} hours free per week, ${freeTimePerDay} hours free per day.`
+    }
+
+    const onClick = () => {
+        history('/Form')
     }
 
     return (
         <div>
-            how much free time do you have?
+            <div>Hello {userName}</div>
+            <div>you spend {userWorkingHours} hours working each week</div>
             <div>
-                {`you are making ${monthlyWage} per month`}
+                {`You are making $${monthlyWage} per month after taxes.`}
             </div>
             <div>
-                {`your monthly expenses are ${monthlyExpenses}`}
+                {`Your monthly expenses are $${userMonthlyExpenses}.`}
             </div>
             <div>
                 {makingEnough()}
@@ -111,6 +141,9 @@ const FreeTime = () => {
             <div>
                 {freeTimePerMonth()}
             </div>
+            <button onClick={onClick}>
+                back
+            </button>
         </div>
     )
 }
