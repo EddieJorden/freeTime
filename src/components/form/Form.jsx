@@ -29,39 +29,39 @@ const Form = ({
                 </p>
             </div>
             <div style={{display:"flex", alignItems:"center"}}>
-                <form onSubmit={handleSubmit} title="name and working hours"
+                <form onSubmit={handleSubmit} title="please provide some basic info"
                     style={{width:"100%", height:"100%"}}>
                     <table style={{margin:"auto", textAlign:"right"}}>
                         <tr>
                             <td>
-                                <label>name: </label>
+                                <label>name:  </label>
                             </td>
                             <td>
-                                <input id="userName" type="text"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>working hours: </label>
-                            </td>
-                            <td>
-                                <input id="workingHours" type="text"/>
+                                <input id="userName" type="text" required/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <label>hourly wage: </label>
+                                <label>working hours:  </label>
                             </td>
                             <td>
-                                <input id="userHourlyWage" type="text"/>
+                                <input id="workingHours" type="text" required/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <label>monthly expenses: </label>
+                                <label>hourly wage:  </label>
                             </td>
                             <td>
-                                <input id="monthlyExpenses" type="text"/>
+                                <input id="userHourlyWage" type="text" required/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>monthly expenses:  </label>
+                            </td>
+                            <td>
+                                <input id="monthlyExpenses" type="text" required/>
                             </td>
                         </tr>
                     </table>
