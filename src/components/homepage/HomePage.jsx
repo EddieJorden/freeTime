@@ -1,3 +1,5 @@
+
+
 const HomePage = ({ history }) => {
     const handleClick = () => {
         history('/Form')
@@ -5,6 +7,7 @@ const HomePage = ({ history }) => {
 
     return (
         <div>
+            
             <h1 style={{
                 fontFamily:"Verdana"
             }}>

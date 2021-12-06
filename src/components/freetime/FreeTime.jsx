@@ -8,20 +8,37 @@ const FreeTime = ({
     history
 }) => {
     // time
-    const hoursPerDay = 24
-    // const hoursPerWeek = hoursPerDay * 7
     const hoursPerMonth = 24 * 31
     const hoursSleepingPerDay = 8
     const hoursEatingPerDay = 2
     const hoursNeededEachDay = hoursSleepingPerDay + hoursEatingPerDay
-
-    // working
-    const hourlyWage = userHourlyWage
-    // const workingHoursPerWeek = 72
     const workingHoursPerMonth = userWorkingHours * 4
-
+    
     // money
-    const monthlyWage = (userHourlyWage * workingHoursPerMonth) - ((userHourlyWage * workingHoursPerMonth) * .35)
+    const taxPercent = () => {
+        if (((userHourlyWage * userWorkingHours) * 4) * 12 >= 539900) {
+            return .37
+        }
+        if (((userHourlyWage * userWorkingHours) * 4) * 12 >= 215950) {
+            return .35
+        }
+        if (((userHourlyWage * userWorkingHours) * 4) * 12 >= 170050) {
+            return .32
+        }
+        if (((userHourlyWage * userWorkingHours) * 4) * 12 >= 89075) {
+            return .24
+        }
+        if (((userHourlyWage * userWorkingHours) * 4) * 12 >= 41775) {
+            return .22
+        }
+        if (((userHourlyWage * userWorkingHours) * 4) * 12 >= 10275) {
+            return .12
+        }
+        if (((userHourlyWage * userWorkingHours) * 4) * 12 < 10275) {
+            return .10
+        }
+    }
+    const monthlyWage = (userHourlyWage * workingHoursPerMonth) - ((userHourlyWage * workingHoursPerMonth) * taxPercent())
 
     const myMonthlyCosts = {
         rent: 2995,
@@ -79,7 +96,6 @@ const FreeTime = ({
         const totalTimeNeededPerMonth = timeNeededPerMonth + workingHoursPerMonth
         const percentOfTime = Math.floor((totalTimeNeededPerMonth / hoursPerMonth) * 100)
         const naturesBalance = Math.floor(hoursPerMonth * .61803398875)
-        const naturesBalanceOverUnder = hoursPerMonth - naturesBalance
         let hoursComparedToBalance = null
         if (totalTimeNeededPerMonth < naturesBalance) {
             hoursComparedToBalance = `Congratulations you have more than 38.2 percent of your time free per month.`
@@ -103,8 +119,12 @@ const FreeTime = ({
         return `You have ${totalFreeTimePerMonth} hours free per month, ${freeTimePerWeek} hours free per week, ${freeTimePerDay} hours free per day.`
     }
 
-    const onClick = () => {
+    const onBackClick = () => {
         history('/Form')
+    }
+
+    const onFinancesClick = () => {
+        history('/Finances')
     }
 
     return (
@@ -141,21 +161,46 @@ const FreeTime = ({
             <div>
                 {freeTimePerMonth()}
             </div>
-            <button
-                onClick={onClick}
-                style={{
-                    width:"120px",
-                    height:"40px",
-                    fontWeight:"bold",
-                    fontSize:"30px",
-                    backgroundColor:"#e62a00",
-                    color:"white",
-                    borderRadius:"8px",
-                    marginTop:"12px"
-                }}
-            >
-                back
-            </button>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <button
+                                onClick={onBackClick}
+                                style={{
+                                width:"120px",
+                                height:"40px",
+                                fontWeight:"bold",
+                                fontSize:"30px",
+                                backgroundColor:"#e62a00",
+                                color:"white",
+                                borderRadius:"8px",
+                                marginTop:"12px"
+                            }}
+                            >
+                                back
+                            </button>
+                        </td>
+                        <td>
+                            <button
+                                onClick={onFinancesClick}
+                                style={{
+                                width:"120px",
+                                height:"40px",
+                                fontWeight:"bold",
+                                fontSize:"30px",
+                                backgroundColor:"#e62a00",
+                                color:"white",
+                                borderRadius:"8px",
+                                marginTop:"12px"
+                            }}
+                            >
+                                finances
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     )
 }

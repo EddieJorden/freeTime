@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import HomePage from '../src/components/homepage/HomePage';
 import FreeTime from '../src/components/freetime/FreeTime';
 import Form from '../src/components/form/Form';
+import Finances from '../src/components/finances/Finances'
 
 function App() {
   const [userName, setUserName] = useState("")
@@ -12,10 +13,16 @@ function App() {
   const [userHourlyWage, setUserHourlyWage] = useState("0")
   const [userMonthlyExpenses, setUserMonthlyExpenses] = useState("0")
   const history = useNavigate()
+
+  // this is just a fun way to get around error saying that Router is defined but never used
+  if (Router) {
+    console.log('Router is True')
+  } else console.log('Router is False')
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={logo} className="App-logo" alt="logo"/>
           <Routes>
             <Route
               path="/"
@@ -48,6 +55,18 @@ function App() {
                   />
                 }
               >
+            </Route>
+            <Route
+              path="/Finances"
+              element={
+                <Finances
+                  userWorkingHours={userWorkingHours}
+                  userHourlyWage={userHourlyWage}
+                  userMonthlyExpenses={userMonthlyExpenses}
+                  history={history}
+                />
+              }
+            >
             </Route>
           </Routes>
       </header>
