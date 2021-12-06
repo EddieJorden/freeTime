@@ -20,11 +20,13 @@ const Form = ({
 
     return (
         <div>
-            <div>
-                <div
-                    style={{fontSize:"32px", fontWeight:"bold"}}>
-                        How much free time do you have?
+            <div >
+                <div style={{fontSize:"32px", fontWeight:"bold"}}>
+                    how much free time do you have?
                 </div>
+                <p style={{marginBottom:"39px"}}>
+                    please provide the following details
+                </p>
             </div>
             <div style={{display:"flex", alignItems:"center"}}>
                 <form onSubmit={handleSubmit} title="name and working hours"
@@ -67,7 +69,7 @@ const Form = ({
                         type="submit"
                         title="submit"
                         style={{
-                            backgroundColor:"#e62a00",
+                            backgroundColor:"#ffd000",
                             color:"white",
                             fontSize:"18px",
                             fontWeight:"bold",

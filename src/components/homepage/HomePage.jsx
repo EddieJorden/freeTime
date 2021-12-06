@@ -5,8 +5,10 @@ const HomePage = ({ history }) => {
 
     return (
         <div>
-            <h1>
-                How much free time do you have?
+            <h1 style={{
+                fontFamily:"Verdana"
+            }}>
+                how much free time do you have?
             </h1>
             <div >
                 <button 
@@ -19,7 +21,8 @@ const HomePage = ({ history }) => {
                         fontSize:'30px',
                         fontWeight:'bold',
                         color:'white',
-                        cursor:'pointer'
+                        cursor:'pointer',
+                        margin:"35px"
                     }}
                 >
                     find out
