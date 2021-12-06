@@ -16,7 +16,7 @@ const FreeTime = ({
     const hoursNeededEachDay = hoursSleepingPerDay + hoursEatingPerDay
 
     // working
-    const hourlyWage = 90
+    const hourlyWage = userHourlyWage
     const workingHoursPerWeek = 72
     const workingHoursPerMonth = userWorkingHours * 4
 
@@ -141,7 +141,19 @@ const FreeTime = ({
             <div>
                 {freeTimePerMonth()}
             </div>
-            <button onClick={onClick}>
+            <button
+                onClick={onClick}
+                style={{
+                    width:"120px",
+                    height:"40px",
+                    fontWeight:"bold",
+                    fontSize:"30px",
+                    backgroundColor:"#e62a00",
+                    color:"white",
+                    borderRadius:"8px",
+                    marginTop:"12px"
+                }}
+            >
                 back
             </button>
         </div>

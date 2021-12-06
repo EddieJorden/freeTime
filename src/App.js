@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import HomePage from '../src/components/homepage/HomePage';
 import FreeTime from '../src/components/freetime/FreeTime';
 import Form from '../src/components/form/Form';
 
@@ -16,7 +17,13 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
           <Routes>
-            {/* <Route exact path="/" component={App}></Route> */}
+            <Route
+              path="/"
+              element={
+                <HomePage history={history}/>
+              }
+            >
+            </Route>
             <Route
               path="/Form"
               element={
@@ -43,18 +50,6 @@ function App() {
               >
             </Route>
           </Routes>
-        {/* <Form
-          setUserName={setUserName}
-          setUserWorkingHours={setUserWorkingHours}
-          setUserHourlyWage={setUserHourlyWage}
-          setUserMonthlyExpenses={setUserMonthlyExpenses}
-        />
-        <FreeTime
-          userName={userName}
-          userWorkingHours={userWorkingHours}
-          userHourlyWage={userHourlyWage}
-          userMonthlyExpenses={userMonthlyExpenses}
-        /> */}
       </header>
     </div>
   );

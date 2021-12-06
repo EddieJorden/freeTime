@@ -22,37 +22,65 @@ const Form = ({
     return (
         <div>
             <div>
-                <div>How much free time do you have?</div>
+                <div
+                    style={{
+                        fontSize:"32px",
+                        fontWeight:"bold"
+                    }}
+                    >
+                        How much free time do you have?
+                </div>
+            </div >
+            <div style={{
+                
+            }}>
+                <form onSubmit={handleSubmit} title="name and working hours"
+                    style={{
+                        
+                    }}
+                >
+                    <table >
+                        <tr>
+                            <td>
+                                <label>name: </label>
+                                <input id="userName" type="text"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>working hours: </label>
+                                <input id="workingHours" type="text"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>hourly wage: </label>
+                                <input id="userHourlyWage" type="text"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>monthly expenses: </label>
+                                <input id="monthlyExpenses" type="text"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <input
+                        type="submit"
+                        title="submit"
+                        style={{
+                            backgroundColor:"#e62a00",
+                            color:"white",
+                            fontSize:"18px",
+                            fontWeight:"bold",
+                            width:"80px",
+                            height:"30px",
+                            borderRadius:"5px",
+                            marginTop:"18px"
+                        }}
+                    />
+                </form>
             </div>
-            <form onSubmit={handleSubmit} title="name and working hours">
-                <table>
-                    <tr>
-                        <td>
-                            <label>name: </label>
-                            <input id="userName" type="text"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>working hours: </label>
-                            <input id="workingHours" type="text"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>hourly wage: </label>
-                            <input id="userHourlyWage" type="text"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>monthly expenses: </label>
-                            <input id="monthlyExpenses" type="text"/>
-                        </td>
-                    </tr>
-                </table>
-                <input type="submit" title="submit"/>
-            </form>
         </div>
     )
 }
