@@ -16,51 +16,49 @@ const Form = ({
         console.log('monthly expenses', event.target[3].value)
         setUserMonthlyExpenses(event.target[3].value)
         history('/FreeTime')
-        
     }
 
     return (
         <div>
             <div>
                 <div
-                    style={{
-                        fontSize:"32px",
-                        fontWeight:"bold"
-                    }}
-                    >
+                    style={{fontSize:"32px", fontWeight:"bold"}}>
                         How much free time do you have?
                 </div>
-            </div >
-            <div style={{
-                
-            }}>
+            </div>
+            <div style={{display:"flex", alignItems:"center"}}>
                 <form onSubmit={handleSubmit} title="name and working hours"
-                    style={{
-                        
-                    }}
-                >
-                    <table >
+                    style={{width:"100%", height:"100%"}}>
+                    <table style={{margin:"auto", textAlign:"right"}}>
                         <tr>
                             <td>
                                 <label>name: </label>
+                            </td>
+                            <td>
                                 <input id="userName" type="text"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <label>working hours: </label>
+                            </td>
+                            <td>
                                 <input id="workingHours" type="text"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <label>hourly wage: </label>
+                            </td>
+                            <td>
                                 <input id="userHourlyWage" type="text"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <label>monthly expenses: </label>
+                            </td>
+                            <td>
                                 <input id="monthlyExpenses" type="text"/>
                             </td>
                         </tr>

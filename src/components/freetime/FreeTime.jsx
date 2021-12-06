@@ -9,7 +9,7 @@ const FreeTime = ({
 }) => {
     // time
     const hoursPerDay = 24
-    const hoursPerWeek = hoursPerDay * 7
+    // const hoursPerWeek = hoursPerDay * 7
     const hoursPerMonth = 24 * 31
     const hoursSleepingPerDay = 8
     const hoursEatingPerDay = 2
@@ -17,7 +17,7 @@ const FreeTime = ({
 
     // working
     const hourlyWage = userHourlyWage
-    const workingHoursPerWeek = 72
+    // const workingHoursPerWeek = 72
     const workingHoursPerMonth = userWorkingHours * 4
 
     // money
