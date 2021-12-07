@@ -36,8 +36,8 @@ const Finances = ({ userHourlyWage, userWorkingHours, userMonthlyExpenses, histo
         let overUnder = monthlyWageAfterTaxes - userMonthlyExpenses
             console.log('overUnder', overUnder)
         return overUnder
-        
     }
+
     const timeTillRich = () => {
         let savings = 0
         let months = 0
@@ -70,7 +70,6 @@ const Finances = ({ userHourlyWage, userWorkingHours, userMonthlyExpenses, histo
             <div >
                 <table style={{
                     borderSpacing:"30px"
-                    
                 }}>
                     <tbody >
                         <tr>
@@ -82,7 +81,6 @@ const Finances = ({ userHourlyWage, userWorkingHours, userMonthlyExpenses, histo
                                 <div>monthly expenses: </div>
                                 <div>{userMonthlyExpenses}</div>
                             </td>
-
                             <td>
                                 <div>monthly profit: </div>
                                 <div>{monthlyOverUnder()}</div>
