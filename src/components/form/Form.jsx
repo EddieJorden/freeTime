@@ -7,13 +7,13 @@ const Form = ({
 }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
-            console.log('user name', event.target[0].value)
+        console.log('user name', event.target[0].value)
         setUserName(event.target[0].value)
-            console.log('weekly working hours', event.target[1].value)
+        console.log('weekly working hours', event.target[1].value)
         setUserWorkingHours(event.target[1].value)
-            console.log('hourly wage', event.target[2].value)
+        console.log('hourly wage', event.target[2].value)
         setUserHourlyWage(event.target[2].value)
-            console.log('monthly expenses', event.target[3].value)
+        console.log('monthly expenses', event.target[3].value)
         setUserMonthlyExpenses(event.target[3].value)
         history('/FreeTime')
     }

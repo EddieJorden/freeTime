@@ -37,6 +37,9 @@ const FreeTime = ({
         if (((userHourlyWage * userWorkingHours) * 4) * 12 < 10275) {
             return .10
         }
+        if (((userHourlyWage * userWorkingHours) * 4) * 12 <= 0) {
+            return 0
+        }
     }
     const monthlyWage = (userHourlyWage * workingHoursPerMonth) - ((userHourlyWage * workingHoursPerMonth) * taxPercent())
 

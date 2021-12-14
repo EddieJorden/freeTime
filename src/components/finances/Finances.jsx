@@ -1,7 +1,8 @@
 const Finances = ({ userHourlyWage, userWorkingHours, userMonthlyExpenses, history }) => {
 
     const monthlyIncome = (userHourlyWage * userWorkingHours) * 4
-    const monthlyIncomeWithReturn = monthlyIncome + (monthlyIncome * .15)
+    
+
     console.log('userHourlyWage = ', userHourlyWage)
     console.log('userWorkingHours = ', userWorkingHours)
     console.log('monthlyIncome = ', monthlyIncome)
@@ -32,8 +33,11 @@ const Finances = ({ userHourlyWage, userWorkingHours, userMonthlyExpenses, histo
     const monthlyWageAfterTaxes = ((userHourlyWage * userWorkingHours) * 4) - (((userHourlyWage * userWorkingHours) * 4) * taxPercent())
         console.log('monthlyWagesAfterTaxes', monthlyWageAfterTaxes)
 
+    const monthlyIncomeWithReturn = monthlyIncome + (monthlyIncome * .10)
+
+    let overUnder = monthlyWageAfterTaxes - userMonthlyExpenses
+
     const monthlyOverUnder = () => {
-        let overUnder = monthlyWageAfterTaxes - userMonthlyExpenses
             console.log('overUnder', overUnder)
         return overUnder
     }
